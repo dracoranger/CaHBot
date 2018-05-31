@@ -27,7 +27,7 @@ currentDealer = 0
 
 black = ''
 white = ''
-with open(cardsBlack) as b:#I NEED A QUEUE!
+with open(cardBlack) as b:#I NEED A QUEUE!
     black = deque(random.shuffle(b.readlines()))
 with open(cardsWhite) as w:
     white = deque(random.shuffle(w.readlines()))
