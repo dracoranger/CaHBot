@@ -77,8 +77,8 @@ async def on_message(message):
                 hand = []
                 for j in range(0, 7):
                     card = black.pop()
-                    hand.append(black[j])
-                    black.append(card)
+                    hand.append(card)
+                    black.appendleft(card)
                 cardStorage.append(hand)
             for i in range(0, len(players)):
                 car = ''
@@ -91,9 +91,9 @@ async def on_message(message):
             for i in range(0, len(players)):
                 if i == currentDealer:
                     await client.send_message(players[i], "Choose the winner")
-                    wCard = white.pop()
-                    await client.send_message(message.channel, wCard)
-                    white.append(wCard)
+                    card = white.pop()
+                    await client.send_message(message.channel, card)
+                    white.appendleft(card)
                 else:
                     await client.send_message(players[i], "Select your card")
         elif message.content.startswith('!selectWinner') and players[currentDealer] == message.author:
@@ -134,6 +134,6 @@ async def on_message(message):
             del cardStorage[locl][int(message.content[8])]
             card = black.pop()
             cardStorage[locl].append(card)
-            black.append(card)
+            black.appendleft(card)
 
 client.run(token)
